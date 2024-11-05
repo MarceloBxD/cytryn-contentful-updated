@@ -13,6 +13,7 @@ import { ABOUT_DATA } from "@/data";
 // image
 import Image from "next/image";
 import { Title } from "../../components/Title";
+import { convertToBold } from "@/utils/convertToBold";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,17 +22,11 @@ type AboutProps = {
 };
 
 const About: React.FC<AboutProps> = ({aboutData}) => {
-
-  console.log('items', aboutData[0].fields)
-
   const  {sobreMim, descricao1, descricao2} = aboutData[0].fields;
-
   const aboutMeDataFormatted = sobreMim.split('&');
-
   const OWNER_NAME = "Isabela Cytryn";
 
   useEffect(() => {
-    // Animação da imagem com um efeito de zoom suave
     gsap.fromTo(
       ".about-image",
       {
@@ -52,7 +47,6 @@ const About: React.FC<AboutProps> = ({aboutData}) => {
       }
     );
 
-    // Animação dos itens da lista com um efeito de deslizamento suave
     gsap.from(".about-item", {
       opacity: 0,
       y: 30,
@@ -67,7 +61,6 @@ const About: React.FC<AboutProps> = ({aboutData}) => {
       ease: "power2.out",
     });
 
-    // Adiciona uma animação de rotação sutil para a forma personalizada
     gsap.fromTo(
       ".custom-shape",
       {
@@ -101,10 +94,6 @@ const About: React.FC<AboutProps> = ({aboutData}) => {
       <div className="relative mt-8 flex-col md:flex md:flex-row gap-6 md:gap-10">
         <ul className="grid grid-cols-1 text-black">
         {aboutMeDataFormatted.map((item: string, index: number) => {
-  // Divida o texto em partes ao encontrar padrões de "**...**"
-  const formattedItem = item.split(/\*\*(.*?)\*\*/).map((part, i) =>
-    i % 2 === 1 ? <b key={i}>{part}</b> : part // Se for parte entre **...**, envolva com <b>
-  );
 
   return (
     <li
@@ -112,7 +101,7 @@ const About: React.FC<AboutProps> = ({aboutData}) => {
       className="text-lg  lg:text-md h-fit flex items-center mb-2 p-1 gap-2"
     >
       <FaCheck className="min-w-5" width={10} height={10} color="#AE8F72" />
-      <p className="text-quaternary">{formattedItem}</p>
+      <p className="text-quaternary">{convertToBold(item)}</p>
     </li>
   );
 })}

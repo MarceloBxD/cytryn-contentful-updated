@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 type TitleProps = {
-  text: string;
+  text: string | React.ReactNode;
   className?: string;
 };
 

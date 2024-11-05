@@ -11,7 +11,7 @@ import { Pause } from "lucide-react";
 import { Heart } from "lucide-react";
 import { FaHamburger } from "react-icons/fa";
 import { MessageCircleIcon } from "lucide-react";
-
+import { convertToBold } from "@/utils/convertToBold";
 // components
 import SolveProblemCard from "../../components/SolveProblemCard";
 import { FADE_IN_BASIC_ANIMATION } from "@/utils/animations";
@@ -32,7 +32,7 @@ const SolveProblems: React.FC<SolveProblemsProps> = ({textsFromContentful}) => {
         faceIcon: <TfiFaceSad size={24} color="#FFF" />,
         description: (
           <p className="font-normal">
-            {cards[0]}
+            {convertToBold(cards[0])}
           </p>
         ),
       },
@@ -40,7 +40,8 @@ const SolveProblems: React.FC<SolveProblemsProps> = ({textsFromContentful}) => {
         faceIcon: <IoCloud size={24} color="#FFF" />,
         description: (
           <p className="font-normal">
-            {cards[1]}
+                        {convertToBold(cards[1])}
+
           </p>
         ),
       },
@@ -48,7 +49,8 @@ const SolveProblems: React.FC<SolveProblemsProps> = ({textsFromContentful}) => {
         faceIcon: <Pause size={24} color="#FFF" />,
         description: (
           <p className="font-normal">
-           {cards[2]}
+                       {convertToBold(cards[2])}
+
           </p>
         ),
       },
@@ -56,7 +58,8 @@ const SolveProblems: React.FC<SolveProblemsProps> = ({textsFromContentful}) => {
         faceIcon: <Heart size={24} color="#FFF" />,
         description: (
           <p className="font-normal">
-           {cards[3]}
+                       {convertToBold(cards[3])}
+
           </p>
         ),
       },
@@ -64,7 +67,7 @@ const SolveProblems: React.FC<SolveProblemsProps> = ({textsFromContentful}) => {
         faceIcon: <FaHamburger size={24} color="#FFF" />,
         description: (
           <p className="font-normal">
-            {cards[4]}
+          {convertToBold(cards[4])}
           </p>
         ),
       },
@@ -72,7 +75,7 @@ const SolveProblems: React.FC<SolveProblemsProps> = ({textsFromContentful}) => {
         faceIcon: <MessageCircleIcon size={24} color="#FFF" />,
         description: (
           <p className="font-normal">
-            {cards[5]}
+            {convertToBold(cards[5])}
           </p>
         ),
       },
@@ -126,3 +129,4 @@ const SolveProblems: React.FC<SolveProblemsProps> = ({textsFromContentful}) => {
 };
 
 export default SolveProblems;
+

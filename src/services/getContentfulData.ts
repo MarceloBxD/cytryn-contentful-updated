@@ -1,7 +1,7 @@
 import { createClient } from "contentful";
 
 type Entry = {
-  contentType: "faq" | "textosPrincipaisDoBanner" | "seEssaASuaRealidadeHoje" | "sobreMim";
+  contentType: "faq" | "textosPrincipaisDoBanner" | "seEssaASuaRealidadeHoje" | "sobreMim" | "comoEuPossoTeAjudar";
 };
 
 export const getEntries = async ({ contentType }: Entry) => {
