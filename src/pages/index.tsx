@@ -21,6 +21,7 @@ export const getStaticProps = async () => {
     faq,
     mainBannerTexts,
     identificationTexts,
+    sobreMim,
   ] = await Promise.all([
     getEntries({
       contentType: "faq",
@@ -30,7 +31,10 @@ export const getStaticProps = async () => {
     }),
     getEntries({
       contentType: "seEssaASuaRealidadeHoje"
-    })
+    }),
+    getEntries({
+      contentType: "sobreMim"
+    }),
   ]);
 
   // const MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY as string;
@@ -42,6 +46,7 @@ export const getStaticProps = async () => {
       faq,
       mainBannerTexts,
       identificationTexts,
+      sobreMim
       // MAPS_API_KEY,
     },
     revalidate: 60 * 5, // 5 minutes
@@ -56,9 +61,10 @@ type HomeProps = {
   identificationTexts: any;
   faq: any;
   allMidia: any;
+  sobreMim: any;
 }
 
-export default function Home({ PHONE_NUMBER, faq, mainBannerTexts, identificationTexts }: HomeProps) {
+export default function Home({ PHONE_NUMBER, faq, mainBannerTexts, identificationTexts, sobreMim }: HomeProps) {
 
   const FAQ_ANSWERS = faq[0].fields.answers.content[0].content[0].value.split('&')
   const FAQ_QUESTIONS = faq[0].fields.question;
@@ -70,7 +76,7 @@ export default function Home({ PHONE_NUMBER, faq, mainBannerTexts, identificatio
       <Presentation mainBannerTexts={mainBannerTexts}/>
       <SolveProblems textsFromContentful={identificationTexts}/>
       <Approach />
-      <About />
+      <About aboutData={sobreMim}/>
       <Feedbacks />
       <Faq answers={FAQ_ANSWERS} questions={FAQ_QUESTIONS}/>
       <Footer mapsApiKey={""} phoneNumber={PHONE_NUMBER}/>
