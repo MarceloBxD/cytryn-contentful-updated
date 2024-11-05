@@ -82,6 +82,7 @@ const About: React.FC<AboutProps> = ({aboutData}) => {
     );
   }, []);
 
+  
   return (
     <section id="sobre-mim" className="relative container">
       <Title text="SOBRE MIM" />
