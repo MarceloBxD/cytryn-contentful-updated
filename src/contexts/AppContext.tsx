@@ -13,6 +13,7 @@ type AppContextProps = {
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
+
 type DeviceProps = {
   mobile: boolean | undefined;
   tablet: boolean | undefined;
